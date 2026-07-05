@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #101828;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+
+  /* Brand blue — matches the TaxTrack Solutions wordmark */
+  --color-brand-50: #eaf1fc;
+  --color-brand-100: #cfe0f8;
+  --color-brand-200: #9fc1f1;
+  --color-brand-300: #6fa3ea;
+  --color-brand-400: #3e84e3;
+  --color-brand-500: #1c63d6;
+  --color-brand-600: #1554c4;
+  --color-brand-700: #113f96;
+  --color-brand-800: #0c2c6d;
+  --color-brand-900: #081c48;
+  --color-brand-950: #05112e;
+
+  /* Brand orange — matches the ring/flag in the logo mark */
+  --color-gold-50: #fef3e8;
+  --color-gold-100: #fde0c2;
+  --color-gold-200: #fbc488;
+  --color-gold-300: #f8a552;
+  --color-gold-400: #f58b2e;
+  --color-gold-500: #f0731a;
+  --color-gold-600: #d65c10;
+  --color-gold-700: #b0470d;
+  --color-gold-800: #8a380f;
+  --color-gold-900: #6e2d10;
+
+  /* Brand green — matches the "T" mark in the logo, used sparingly */
+  --color-leaf-50: #e9f9ef;
+  --color-leaf-100: #c8f0d7;
+  --color-leaf-400: #34c271;
+  --color-leaf-500: #1fae59;
+  --color-leaf-600: #158a45;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+html {
+  scroll-behavior: smooth;
+}
