@@ -1,3 +1,11 @@
 [build]
   command = "npm run build"
   publish = "out"
+
+[build.environment]
+  # This is a static export (output: "export" in next.config.ts). Force
+  # Netlify to skip its automatic Next.js Runtime plugin so the site is
+  # deployed as plain static files from `out/` rather than dynamically
+  # rendered — otherwise Netlify's static form scanner (which only reads
+  # the published HTML files) never sees the contact form.
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
