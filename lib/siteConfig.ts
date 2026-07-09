@@ -1,6 +1,4 @@
 // Central place for business details used across the site.
-// TODO: Replace the placeholder values below with TaxTrack Solutions' real
-// contact details, registration numbers, and social links before launch.
 export const siteConfig = {
   name: "TaxTrack Solutions",
   shortName: "TaxTrack",
@@ -8,16 +6,16 @@ export const siteConfig = {
   description:
     "TaxTrack Solutions helps Indian founders register their Private Limited Company end-to-end, and supports individuals and businesses with income tax filing, GST compliance, bookkeeping, and payroll.",
   url: "https://taxtracksolutions.com",
-  phone: "+91 98765 43210",
-  phoneHref: "+919876543210",
-  whatsapp: "919876543210",
-  email: "info@taxtracksolutions.com",
+  phone: "7303463702",
+  phoneHref: "+917303463702",
+  whatsapp: "917303463702",
+  email: "office@taxtracksolutions.com",
   address: {
     line1: "TaxTrack Solutions",
-    line2: "Add your office address here",
-    city: "City",
-    state: "State",
-    pin: "PIN Code",
+    line2: "Ground Floor 1345/342 Part-1 Nangla Enclave",
+    city: "Faridabad",
+    state: "Haryana",
+    pin: "121005",
     country: "India",
   },
   hours: [
@@ -26,7 +24,6 @@ export const siteConfig = {
     { day: "Sunday", time: "Closed" },
   ],
   social: {
-    facebook: "https://facebook.com/taxtracksolutions",
     instagram: "https://instagram.com/taxtracksolutions",
     linkedin: "https://linkedin.com/company/taxtracksolutions",
     twitter: "https://x.com/taxtracksolns",

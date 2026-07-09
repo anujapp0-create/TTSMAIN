@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import Container from "@/components/Container";
 import Logo from "@/components/Logo";
-import { FacebookIcon, InstagramIcon, LinkedInIcon } from "@/components/SocialIcons";
+import { InstagramIcon, LinkedInIcon } from "@/components/SocialIcons";
 import { siteConfig } from "@/lib/siteConfig";
 import { services } from "@/lib/services";
 
@@ -16,13 +16,6 @@ export default function Footer() {
             {siteConfig.description}
           </p>
           <div className="mt-5 flex items-center gap-3">
-            <a
-              href={siteConfig.social.facebook}
-              aria-label="Facebook"
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-900 text-brand-200 hover:bg-gold-500 hover:text-brand-950"
-            >
-              <FacebookIcon size={16} />
-            </a>
             <a
               href={siteConfig.social.instagram}
               aria-label="Instagram"
@@ -107,7 +100,7 @@ export default function Footer() {
               <MapPin size={16} className="mt-0.5 shrink-0" />
               <span>
                 {siteConfig.address.line2}, {siteConfig.address.city},{" "}
-                {siteConfig.address.state} {siteConfig.address.pin}
+                {siteConfig.address.state} - {siteConfig.address.pin}
               </span>
             </li>
           </ul>

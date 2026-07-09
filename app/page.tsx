@@ -6,6 +6,7 @@ import ServiceCard from "@/components/ServiceCard";
 import BlogCard from "@/components/BlogCard";
 import CTASection from "@/components/CTASection";
 import StatsBar from "@/components/StatsBar";
+import Reveal from "@/components/Reveal";
 import { services, getServiceBySlug } from "@/lib/services";
 import { getSortedPosts } from "@/lib/blogPosts";
 import { siteConfig } from "@/lib/siteConfig";
@@ -53,25 +54,27 @@ export default function Home() {
             backgroundSize: "28px 28px",
           }}
         />
-        <Container className="relative flex flex-col gap-14 py-20 sm:py-28 lg:flex-row lg:items-center">
-          <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-gold-500 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white">
+        <Container className="relative flex flex-col gap-16 py-24 sm:py-32 lg:flex-row lg:items-center">
+          <Reveal className="max-w-2xl">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-gold-500 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.1em] text-white">
               <Star size={13} fill="currentColor" />
               Our most requested service
             </span>
-            <h1 className="mt-6 text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h1 className="mt-7 text-[2.75rem] font-medium leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-[4rem]">
               Register your{" "}
-              <span className="text-gold-400">Private Limited Company</span>{" "}
+              <span className="font-serif italic text-gold-400">
+                Private Limited Company
+              </span>{" "}
               — done right, start to finish.
             </h1>
-            <p className="mt-6 text-lg text-brand-200">
+            <p className="mt-7 max-w-xl text-lg leading-relaxed text-brand-200">
               From DSC and name approval to SPICe+ filing with the MCA and
               your company PAN and TAN, {siteConfig.name}{" "}
               handles your entire incorporation — then keeps you compliant
               on income tax, GST, and bookkeeping once you&apos;re up and
               running.
             </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-9 flex flex-col gap-4 sm:flex-row">
               <Button href="/services/private-limited-company-registration/" variant="primary">
                 Register My Company
               </Button>
@@ -83,117 +86,139 @@ export default function Home() {
                 Explore All Services
               </Button>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="w-full max-w-md rounded-3xl border border-gold-400/40 bg-brand-900/60 p-8 backdrop-blur lg:ml-auto">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-gold-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-gold-400">
-              <Star size={12} fill="currentColor" />
-              Flagship service
-            </span>
-            <h2 className="mt-4 text-xl font-bold text-white">
-              Private Limited Company Registration
-            </h2>
-            <ul className="mt-5 space-y-4">
-              {[
-                "DSC & DIN for all directors",
-                "Company name approval with the MCA",
-                "SPICe+ incorporation filing",
-                "Company PAN & TAN included",
-                "GST & Udyam registration add-on",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-brand-100">
-                  <CheckCircle2
-                    size={20}
-                    className="mt-0.5 shrink-0 text-gold-400"
-                  />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-            <Button
-              href="/services/private-limited-company-registration/"
-              variant="primary"
-              className="mt-6 w-full"
-            >
-              See how it works
-            </Button>
-          </div>
+          <Reveal delay={150} className="w-full max-w-md lg:ml-auto">
+            <div className="rounded-3xl border border-gold-400/40 bg-brand-900/60 p-8 backdrop-blur">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-gold-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.1em] text-gold-400">
+                <Star size={12} fill="currentColor" />
+                Flagship service
+              </span>
+              <h2 className="mt-4 text-xl font-semibold text-white">
+                Private Limited Company Registration
+              </h2>
+              <ul className="mt-5 space-y-4">
+                {[
+                  "DSC & DIN for all directors",
+                  "Company name approval with the MCA",
+                  "SPICe+ incorporation filing",
+                  "Company PAN & TAN included",
+                  "GST & Udyam registration add-on",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-brand-100">
+                    <CheckCircle2
+                      size={20}
+                      className="mt-0.5 shrink-0 text-gold-400"
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <Button
+                href="/services/private-limited-company-registration/"
+                variant="primary"
+                className="mt-6 w-full"
+              >
+                See how it works
+              </Button>
+            </div>
+          </Reveal>
         </Container>
       </section>
 
-      <section className="bg-brand-900 py-10">
+      <section className="bg-brand-900 py-12">
         <Container>
-          <StatsBar />
+          <Reveal>
+            <StatsBar />
+          </Reveal>
         </Container>
       </section>
 
-      <section className="py-20 sm:py-28">
+      <section className="py-24 sm:py-32">
         <Container>
-          <SectionHeading
-            eyebrow="What we do"
-            title="Tax and compliance services built for how Indian businesses actually work"
-            description="Company registration is where we do our best work — and we cover everything you need afterward, too."
-          />
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <ServiceCard key={service.slug} service={service} />
+          <Reveal>
+            <SectionHeading
+              eyebrow="What we do"
+              title="Tax and compliance services built for how Indian businesses actually work"
+              description="Company registration is where we do our best work — and we cover everything you need afterward, too."
+            />
+          </Reveal>
+          <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map((service, i) => (
+              <Reveal key={service.slug} delay={i * 80}>
+                <ServiceCard service={service} />
+              </Reveal>
             ))}
           </div>
         </Container>
       </section>
 
-      <section className="bg-brand-950 py-16 sm:py-20">
-        <Container className="flex flex-col items-center gap-6 text-center">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-gold-500 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white">
-            <Star size={13} fill="currentColor" />
-            {flagship.title}
-          </span>
-          <h2 className="max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Thinking of starting a company? Let&apos;s get it registered
-            properly.
-          </h2>
-          <p className="max-w-xl text-lg text-brand-200">
-            {flagship.shortDescription}
-          </p>
-          <Button
-            href={`/services/${flagship.slug}/`}
-            variant="primary"
-            className="inline-flex items-center gap-2"
-          >
-            Start My Registration
-            <ArrowRight size={16} />
-          </Button>
+      <section className="bg-brand-950 py-20 sm:py-24">
+        <Container>
+          <Reveal className="flex flex-col items-center gap-6 text-center">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-gold-500 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.1em] text-white">
+              <Star size={13} fill="currentColor" />
+              {flagship.title}
+            </span>
+            <h2 className="max-w-2xl text-3xl font-medium leading-[1.15] text-white sm:text-4xl">
+              Thinking of starting a company? Let&apos;s get it registered
+              properly.
+            </h2>
+            <p className="max-w-xl text-lg leading-relaxed text-brand-200">
+              {flagship.shortDescription}
+            </p>
+            <Button
+              href={`/services/${flagship.slug}/`}
+              variant="primary"
+              className="inline-flex items-center gap-2"
+            >
+              Start My Registration
+              <ArrowRight size={16} />
+            </Button>
+          </Reveal>
         </Container>
       </section>
 
-      <section className="bg-slate-50 py-20 sm:py-28">
-        <Container>
-          <SectionHeading
-            eyebrow="Why TaxTrack Solutions"
-            title="Compliance handled with care, not just paperwork"
-          />
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {whyChooseUs.map((item) => {
-              const Icon = item.icon;
-              return (
-                <div key={item.title}>
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-900 text-gold-400">
-                    <Icon size={22} strokeWidth={1.75} />
-                  </span>
-                  <h3 className="mt-4 text-lg font-semibold text-brand-900">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-slate-600">{item.description}</p>
-                </div>
-              );
-            })}
+      <section className="bg-slate-50 py-24 sm:py-32">
+        <Container className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
+          <Reveal className="lg:col-span-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gold-600">
+              Why TaxTrack Solutions
+            </p>
+            <p className="mt-4 font-serif text-2xl italic leading-snug text-brand-900 sm:text-3xl">
+              Compliance handled with care, not just paperwork.
+            </p>
+          </Reveal>
+          <div className="lg:col-span-8">
+            <div className="divide-y divide-slate-200 border-t border-slate-200">
+              {whyChooseUs.map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <Reveal key={item.title} delay={i * 70}>
+                    <div className="flex flex-col gap-4 py-6 sm:flex-row sm:items-start sm:gap-6">
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-900 text-gold-400">
+                        <Icon size={20} strokeWidth={1.75} />
+                      </span>
+                      <div>
+                        <h3 className="font-semibold text-brand-900">
+                          {item.title}
+                        </h3>
+                        <p className="mt-1 text-slate-600">
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </div>
           </div>
         </Container>
       </section>
 
-      <section className="py-20 sm:py-28">
+      <section className="py-24 sm:py-32">
         <Container>
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <SectionHeading
               eyebrow="From the blog"
               title="Straightforward tax guidance, in plain language"
@@ -201,10 +226,12 @@ export default function Home() {
             <Button href="/blog/" variant="outline" className="w-fit">
               View all posts
             </Button>
-          </div>
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {latestPosts.map((post) => (
-              <BlogCard key={post.slug} post={post} />
+          </Reveal>
+          <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {latestPosts.map((post, i) => (
+              <Reveal key={post.slug} delay={i * 80}>
+                <BlogCard post={post} />
+              </Reveal>
             ))}
           </div>
         </Container>

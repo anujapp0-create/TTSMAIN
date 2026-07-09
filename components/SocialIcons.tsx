@@ -1,20 +1,5 @@
 type IconProps = { size?: number; className?: string };
 
-export function FacebookIcon({ size = 16, className = "" }: IconProps) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M13.5 21v-8.06h2.7l.4-3.14h-3.1V7.9c0-.91.25-1.53 1.56-1.53h1.66V3.56A22 22 0 0 0 14.3 3.4c-2.32 0-3.91 1.42-3.91 4.02v2.38H7.7v3.14h2.7V21h3.1Z" />
-    </svg>
-  );
-}
-
 export function InstagramIcon({ size = 16, className = "" }: IconProps) {
   return (
     <svg

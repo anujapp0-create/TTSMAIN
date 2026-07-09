@@ -20,7 +20,7 @@ export default function ServicesPage() {
             <span className="inline-flex items-center rounded-full bg-brand-900 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-gold-400">
               Our services
             </span>
-            <h1 className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            <h1 className="mt-6 font-serif text-4xl font-medium leading-[1.1] text-white sm:text-5xl">
               Everything you need to start and run a compliant business
             </h1>
             <p className="mt-6 text-lg text-brand-200">

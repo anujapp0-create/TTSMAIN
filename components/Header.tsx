@@ -34,42 +34,64 @@ export default function Header() {
               >
                 <Link
                   href={link.href}
-                  className={`flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                  className={`group flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                     isActive(link.href)
                       ? "text-brand-900"
                       : "text-slate-600 hover:text-brand-900"
                   }`}
                 >
-                  {link.label}
+                  <span className="relative">
+                    {link.label}
+                    <span
+                      className={`absolute -bottom-1 left-0 h-px w-full bg-gold-500 transition-transform duration-200 ${
+                        isActive(link.href)
+                          ? "scale-x-100"
+                          : "scale-x-0 group-hover:scale-x-100"
+                      }`}
+                    />
+                  </span>
                   <ChevronDown size={15} />
                 </Link>
-                {servicesOpen && (
-                  <div className="absolute left-0 top-full w-72 pt-2">
-                    <div className="rounded-2xl border border-slate-200 bg-white p-2 shadow-lg">
-                      {services.map((service) => (
-                        <Link
-                          key={service.slug}
-                          href={`/services/${service.slug}/`}
-                          className="block rounded-xl px-4 py-3 text-sm text-slate-700 hover:bg-brand-50 hover:text-brand-900"
-                        >
-                          {service.title}
-                        </Link>
-                      ))}
-                    </div>
+                <div
+                  className={`absolute left-0 top-full w-72 pt-2 transition-all duration-200 ${
+                    servicesOpen
+                      ? "pointer-events-auto translate-y-0 opacity-100"
+                      : "pointer-events-none -translate-y-1 opacity-0"
+                  }`}
+                >
+                  <div className="rounded-2xl border border-slate-200 bg-white p-2 shadow-xl shadow-brand-900/5">
+                    {services.map((service) => (
+                      <Link
+                        key={service.slug}
+                        href={`/services/${service.slug}/`}
+                        className="block rounded-xl px-4 py-3 text-sm text-slate-700 hover:bg-brand-50 hover:text-brand-900"
+                      >
+                        {service.title}
+                      </Link>
+                    ))}
                   </div>
-                )}
+                </div>
               </div>
             ) : (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                className={`group rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                   isActive(link.href)
                     ? "text-brand-900"
                     : "text-slate-600 hover:text-brand-900"
                 }`}
               >
-                {link.label}
+                <span className="relative">
+                  {link.label}
+                  <span
+                    className={`absolute -bottom-1 left-0 h-px w-full bg-gold-500 transition-transform duration-200 ${
+                      isActive(link.href)
+                        ? "scale-x-100"
+                        : "scale-x-0 group-hover:scale-x-100"
+                    }`}
+                  />
+                </span>
               </Link>
             )
           )}

@@ -14,12 +14,12 @@ export default function BlogCard({ post }: { post: BlogPost }) {
   return (
     <Link
       href={`/blog/${post.slug}/`}
-      className="group flex flex-col rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition-all hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg"
+      className="group flex flex-col rounded-2xl border border-slate-200 bg-white p-7 shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-[0_20px_40px_-16px_rgba(8,28,72,0.18)]"
     >
       <span className="mb-4 inline-flex w-fit items-center rounded-full bg-gold-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gold-700">
         {post.category}
       </span>
-      <h3 className="text-xl font-semibold text-brand-900 group-hover:text-brand-700">
+      <h3 className="font-serif text-xl font-medium text-brand-900 group-hover:text-brand-700">
         {post.title}
       </h3>
       <p className="mt-2 flex-1 text-slate-600">{post.excerpt}</p>

@@ -45,7 +45,7 @@ export default async function ServiceDetailPage({
             <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-900 text-gold-400">
               <Icon size={26} strokeWidth={1.75} />
             </span>
-            <h1 className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            <h1 className="mt-6 font-serif text-4xl font-medium leading-[1.1] text-white sm:text-5xl">
               {service.title}
             </h1>
             <p className="mt-6 text-lg text-brand-200">

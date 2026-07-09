@@ -11,44 +11,53 @@ const services = [
   "Something else",
 ];
 
-// This site is exported as static HTML (no server), so the form can't post
-// to an API route on this host. It opens the visitor's email client with the
-// message pre-filled. To collect submissions directly instead, connect this
-// form to a form backend such as Formspree, Web3Forms, or EmailJS and swap
-// the handleSubmit logic below for a fetch() call to that endpoint.
+function encodeForm(data: FormData) {
+  return new URLSearchParams(data as unknown as Record<string, string>).toString();
+}
+
+// Submits to Netlify Forms (https://docs.netlify.com/manage/forms/setup/).
+// Netlify detects this form at deploy time by scanning the static HTML for
+// the data-netlify attribute and the hidden form-name field below, so both
+// need to stay present in the markup exactly as rendered here.
 export default function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const form = new FormData(event.currentTarget);
-    const name = form.get("name");
-    const email = form.get("email");
-    const phone = form.get("phone");
-    const service = form.get("service");
-    const message = form.get("message");
+    setStatus("submitting");
+    const form = event.currentTarget;
+    const data = new FormData(form);
 
-    const body = [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Phone: ${phone}`,
-      `Service: ${service}`,
-      "",
-      `${message}`,
-    ].join("\n");
-
-    window.location.href = `mailto:${siteConfig.email}?subject=${encodeURIComponent(
-      `New enquiry from ${name}`
-    )}&body=${encodeURIComponent(body)}`;
-
-    setSubmitted(true);
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encodeForm(data),
+      });
+      if (!response.ok) throw new Error("Form submission failed");
+      setStatus("success");
+      form.reset();
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
     <form
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
       className="grid grid-cols-1 gap-5 rounded-2xl border border-slate-200 bg-white p-7 shadow-sm sm:grid-cols-2"
     >
+      <input type="hidden" name="form-name" value="contact" />
+      <p className="hidden">
+        <label>
+          Don&apos;t fill this out if you&apos;re human: <input name="bot-field" />
+        </label>
+      </p>
+
       <div className="sm:col-span-1">
         <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-brand-900">
           Full name
@@ -116,14 +125,21 @@ export default function ContactForm() {
       <div className="sm:col-span-2">
         <button
           type="submit"
-          className="inline-flex w-full items-center justify-center rounded-full bg-gold-500 px-6 py-3 text-sm font-semibold text-brand-950 transition-colors hover:bg-gold-400 sm:w-auto"
+          disabled={status === "submitting"}
+          className="inline-flex w-full items-center justify-center rounded-full bg-gold-500 px-6 py-3 text-sm font-semibold text-brand-950 transition-colors hover:bg-gold-400 disabled:opacity-60 sm:w-auto"
         >
-          Send Message
+          {status === "submitting" ? "Sending..." : "Send Message"}
         </button>
-        {submitted && (
+        {status === "success" && (
           <p className="mt-3 text-sm text-brand-700">
-            Your email app should have opened with your message ready to
-            send. If it didn&apos;t, email us directly at{" "}
+            Thanks — your message has been sent. We&apos;ll get back to you
+            shortly.
+          </p>
+        )}
+        {status === "error" && (
+          <p className="mt-3 text-sm text-red-600">
+            Something went wrong sending your message. Please try again, or
+            email us directly at{" "}
             <a href={`mailto:${siteConfig.email}`} className="font-semibold underline">
               {siteConfig.email}
             </a>
