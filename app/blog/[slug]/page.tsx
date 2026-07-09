@@ -5,6 +5,8 @@ import Container from "@/components/Container";
 import BlogContent from "@/components/BlogContent";
 import BlogCard from "@/components/BlogCard";
 import CTASection from "@/components/CTASection";
+import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
 import { blogPosts, getPostBySlug, getSortedPosts } from "@/lib/blogPosts";
 
 export function generateStaticParams() {
@@ -49,26 +51,18 @@ export default async function BlogPostPage({
   return (
     <>
       <article>
-        <section className="bg-brand-950 py-20 sm:py-24">
-          <Container className="max-w-3xl">
-            <span className="inline-flex items-center rounded-full bg-brand-900 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-gold-400">
-              {post.category}
+        <PageHero eyebrow={post.category} title={post.title}>
+          <div className="mt-6 flex items-center gap-5 text-sm text-slate-500">
+            <span className="inline-flex items-center gap-1.5">
+              <CalendarDays size={15} />
+              {formatDate(post.date)}
             </span>
-            <h1 className="mt-6 font-serif text-3xl font-medium leading-[1.15] text-white sm:text-4xl">
-              {post.title}
-            </h1>
-            <div className="mt-6 flex items-center gap-5 text-sm text-brand-300">
-              <span className="inline-flex items-center gap-1.5">
-                <CalendarDays size={15} />
-                {formatDate(post.date)}
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <Clock size={15} />
-                {post.readTime}
-              </span>
-            </div>
-          </Container>
-        </section>
+            <span className="inline-flex items-center gap-1.5">
+              <Clock size={15} />
+              {post.readTime}
+            </span>
+          </div>
+        </PageHero>
 
         <section className="py-16 sm:py-20">
           <Container className="max-w-3xl">
@@ -78,14 +72,18 @@ export default async function BlogPostPage({
       </article>
 
       {relatedPosts.length > 0 && (
-        <section className="bg-slate-50 py-20">
+        <section className="bg-gold-50/60 py-20">
           <Container>
-            <h2 className="text-2xl font-bold text-brand-900">
-              More from the blog
-            </h2>
+            <Reveal>
+              <h2 className="font-serif text-2xl font-medium text-brand-900">
+                More from the blog
+              </h2>
+            </Reveal>
             <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {relatedPosts.map((related) => (
-                <BlogCard key={related.slug} post={related} />
+              {relatedPosts.map((related, i) => (
+                <Reveal key={related.slug} delay={i * 60}>
+                  <BlogCard post={related} />
+                </Reveal>
               ))}
             </div>
           </Container>

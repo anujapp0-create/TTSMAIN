@@ -3,8 +3,10 @@ import { notFound } from "next/navigation";
 import { CheckCircle2 } from "lucide-react";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
+import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
 import FAQAccordion from "@/components/FAQAccordion";
+import Reveal from "@/components/Reveal";
 import { Button } from "@/components/Button";
 import { services, getServiceBySlug } from "@/lib/services";
 
@@ -35,80 +37,68 @@ export default async function ServiceDetailPage({
   const service = getServiceBySlug(slug);
   if (!service) notFound();
 
-  const Icon = service.icon;
-
   return (
     <>
-      <section className="bg-brand-950 py-20 sm:py-24">
-        <Container>
-          <div className="max-w-3xl">
-            <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-900 text-gold-400">
-              <Icon size={26} strokeWidth={1.75} />
-            </span>
-            <h1 className="mt-6 font-serif text-4xl font-medium leading-[1.1] text-white sm:text-5xl">
-              {service.title}
-            </h1>
-            <p className="mt-6 text-lg text-brand-200">
-              {service.heroDescription}
-            </p>
-            <div className="mt-8">
-              <Button href="/contact/" variant="primary">
-                Book Free Consultation
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <PageHero icon={service.icon} title={service.title} description={service.heroDescription}>
+        <div className="mt-8">
+          <Button href="/contact/" variant="primary">
+            Book Free Consultation
+          </Button>
+        </div>
+      </PageHero>
 
       <section className="py-20 sm:py-24">
         <Container className="grid grid-cols-1 gap-12 lg:grid-cols-3">
-          <div className="lg:col-span-1">
+          <Reveal className="lg:col-span-1">
             <SectionHeading title="Who this is for" />
             <ul className="mt-6 space-y-4">
               {service.whoItsFor.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-slate-600">
                   <CheckCircle2
                     size={20}
-                    className="mt-0.5 shrink-0 text-brand-600"
+                    className="mt-0.5 shrink-0 text-gold-500"
                   />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
-          </div>
+          </Reveal>
 
           <div className="lg:col-span-2">
-            <SectionHeading title="What's included" />
+            <Reveal>
+              <SectionHeading title="What's included" />
+            </Reveal>
             <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
-              {service.features.map((feature) => (
-                <div
-                  key={feature.title}
-                  className="rounded-2xl border border-slate-200 bg-white p-6"
-                >
-                  <h3 className="font-semibold text-brand-900">
-                    {feature.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-slate-600">
-                    {feature.description}
-                  </p>
-                </div>
+              {service.features.map((feature, i) => (
+                <Reveal key={feature.title} delay={i * 60}>
+                  <div className="rounded-2xl border border-slate-200 bg-white p-6">
+                    <h3 className="font-semibold text-brand-900">
+                      {feature.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-slate-600">
+                      {feature.description}
+                    </p>
+                  </div>
+                </Reveal>
               ))}
             </div>
           </div>
         </Container>
       </section>
 
-      <section className="bg-slate-50 py-20 sm:py-24">
+      <section className="bg-gold-50/60 py-20 sm:py-24">
         <Container>
-          <SectionHeading
-            eyebrow="How it works"
-            title="Our process for this service"
-            align="center"
-          />
+          <Reveal>
+            <SectionHeading
+              eyebrow="How it works"
+              title="Our process for this service"
+              align="center"
+            />
+          </Reveal>
           <ol className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {service.process.map((step, index) => (
               <li key={step.title}>
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-900 text-sm font-bold text-gold-400">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gold-500 text-sm font-bold text-white">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <h3 className="mt-4 font-semibold text-brand-900">
@@ -125,7 +115,9 @@ export default async function ServiceDetailPage({
 
       <section className="py-20 sm:py-24">
         <Container className="mx-auto max-w-3xl">
-          <SectionHeading title="Frequently asked questions" align="center" />
+          <Reveal>
+            <SectionHeading title="Frequently asked questions" align="center" />
+          </Reveal>
           <div className="mt-10">
             <FAQAccordion faqs={service.faqs} />
           </div>

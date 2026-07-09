@@ -44,30 +44,29 @@ export default function Home() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-brand-950">
+      <section className="relative overflow-hidden bg-white">
         <div
           aria-hidden="true"
-          className="absolute inset-0 opacity-[0.07]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
-            backgroundSize: "28px 28px",
-          }}
+          className="absolute -top-24 right-[-6%] h-[420px] w-[420px] rounded-full bg-gold-200/50 blur-[110px]"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute bottom-[-10%] left-[-8%] h-[320px] w-[320px] rounded-full bg-brand-100/40 blur-[110px]"
         />
         <Container className="relative flex flex-col gap-16 py-24 sm:py-32 lg:flex-row lg:items-center">
           <Reveal className="max-w-2xl">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-gold-500 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.1em] text-white">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-gold-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.1em] text-gold-700 ring-1 ring-gold-200">
               <Star size={13} fill="currentColor" />
               Our most requested service
             </span>
-            <h1 className="mt-7 text-[2.75rem] font-medium leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-[4rem]">
+            <h1 className="mt-7 text-[2.75rem] font-medium leading-[1.05] tracking-tight text-brand-900 sm:text-6xl lg:text-[4rem]">
               Register your{" "}
-              <span className="font-serif italic text-gold-400">
+              <span className="font-serif italic text-gold-600">
                 Private Limited Company
               </span>{" "}
               — done right, start to finish.
             </h1>
-            <p className="mt-7 max-w-xl text-lg leading-relaxed text-brand-200">
+            <p className="mt-7 max-w-xl text-lg leading-relaxed text-slate-600">
               From DSC and name approval to SPICe+ filing with the MCA and
               your company PAN and TAN, {siteConfig.name}{" "}
               handles your entire incorporation — then keeps you compliant
@@ -78,23 +77,19 @@ export default function Home() {
               <Button href="/services/private-limited-company-registration/" variant="primary">
                 Register My Company
               </Button>
-              <Button
-                href="/services/"
-                variant="outline"
-                className="border-brand-700 text-white hover:bg-brand-900"
-              >
+              <Button href="/services/" variant="outline">
                 Explore All Services
               </Button>
             </div>
           </Reveal>
 
           <Reveal delay={150} className="w-full max-w-md lg:ml-auto">
-            <div className="rounded-3xl border border-gold-400/40 bg-brand-900/60 p-8 backdrop-blur">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-gold-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.1em] text-gold-400">
+            <div className="rounded-3xl border border-gold-200 bg-white p-8 shadow-[0_24px_48px_-24px_rgba(240,115,26,0.25)]">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-gold-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.1em] text-gold-700">
                 <Star size={12} fill="currentColor" />
                 Flagship service
               </span>
-              <h2 className="mt-4 text-xl font-semibold text-white">
+              <h2 className="mt-4 text-xl font-semibold text-brand-900">
                 Private Limited Company Registration
               </h2>
               <ul className="mt-5 space-y-4">
@@ -105,10 +100,10 @@ export default function Home() {
                   "Company PAN & TAN included",
                   "GST & Udyam registration add-on",
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-brand-100">
+                  <li key={item} className="flex items-start gap-3 text-slate-600">
                     <CheckCircle2
                       size={20}
-                      className="mt-0.5 shrink-0 text-gold-400"
+                      className="mt-0.5 shrink-0 text-gold-500"
                     />
                     <span>{item}</span>
                   </li>
@@ -126,7 +121,7 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="bg-brand-900 py-12">
+      <section className="border-y border-slate-100 bg-white py-12">
         <Container>
           <Reveal>
             <StatsBar />
@@ -153,18 +148,18 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="bg-brand-950 py-20 sm:py-24">
+      <section className="bg-gold-50/60 py-20 sm:py-24">
         <Container>
           <Reveal className="flex flex-col items-center gap-6 text-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-gold-500 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.1em] text-white">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.1em] text-gold-700 ring-1 ring-gold-200">
               <Star size={13} fill="currentColor" />
               {flagship.title}
             </span>
-            <h2 className="max-w-2xl text-3xl font-medium leading-[1.15] text-white sm:text-4xl">
+            <h2 className="max-w-2xl font-serif text-3xl font-medium leading-[1.15] text-brand-900 sm:text-4xl">
               Thinking of starting a company? Let&apos;s get it registered
               properly.
             </h2>
-            <p className="max-w-xl text-lg leading-relaxed text-brand-200">
+            <p className="max-w-xl text-lg leading-relaxed text-slate-600">
               {flagship.shortDescription}
             </p>
             <Button
@@ -179,7 +174,7 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="bg-slate-50 py-24 sm:py-32">
+      <section className="bg-white py-24 sm:py-32">
         <Container className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
           <Reveal className="lg:col-span-4">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gold-600">
@@ -196,7 +191,7 @@ export default function Home() {
                 return (
                   <Reveal key={item.title} delay={i * 70}>
                     <div className="flex flex-col gap-4 py-6 sm:flex-row sm:items-start sm:gap-6">
-                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-900 text-gold-400">
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gold-50 text-gold-600">
                         <Icon size={20} strokeWidth={1.75} />
                       </span>
                       <div>
@@ -216,14 +211,14 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="py-24 sm:py-32">
+      <section className="bg-gold-50/60 py-24 sm:py-32">
         <Container>
           <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <SectionHeading
               eyebrow="From the blog"
               title="Straightforward tax guidance, in plain language"
             />
-            <Button href="/blog/" variant="outline" className="w-fit">
+            <Button href="/blog/" variant="outline" className="w-fit bg-white">
               View all posts
             </Button>
           </Reveal>

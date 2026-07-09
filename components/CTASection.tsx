@@ -11,18 +11,26 @@ export default function CTASection({
   description?: string;
 }) {
   return (
-    <section className="bg-brand-900 py-20 sm:py-24">
-      <Container>
+    <section className="relative overflow-hidden bg-gold-500 py-20 sm:py-24">
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(255,255,255,0.25),transparent_45%)]"
+      />
+      <Container className="relative">
         <Reveal className="flex flex-col items-center gap-6 text-center">
-          <h2 className="max-w-2xl text-3xl font-medium leading-[1.15] text-white sm:text-4xl">
+          <h2 className="max-w-2xl font-serif text-3xl font-medium leading-[1.15] text-brand-950 sm:text-4xl">
             {title}
           </h2>
-          <p className="max-w-xl text-lg leading-relaxed text-brand-200">{description}</p>
+          <p className="max-w-xl text-lg leading-relaxed text-brand-950/70">{description}</p>
           <div className="flex flex-col gap-4 sm:flex-row">
-            <Button href="/contact/" variant="primary">
+            <Button href="/contact/" variant="secondary">
               Book Free Consultation
             </Button>
-            <Button href={`tel:${siteConfig.phoneHref}`} variant="outline" className="border-brand-600 text-white hover:bg-brand-800">
+            <Button
+              href={`tel:${siteConfig.phoneHref}`}
+              variant="outline"
+              className="border-brand-950/30 text-brand-950 hover:bg-white/40"
+            >
               Call {siteConfig.phone}
             </Button>
           </div>

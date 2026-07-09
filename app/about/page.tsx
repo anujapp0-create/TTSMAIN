@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { Target, Eye, HeartHandshake, BadgeCheck } from "lucide-react";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
+import PageHero from "@/components/PageHero";
 import StatsBar from "@/components/StatsBar";
 import CTASection from "@/components/CTASection";
+import Reveal from "@/components/Reveal";
 import { siteConfig } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
@@ -41,30 +43,23 @@ const values = [
 export default function AboutPage() {
   return (
     <>
-      <section className="bg-brand-950 py-20 sm:py-24">
-        <Container>
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center rounded-full bg-brand-900 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-gold-400">
-              About {siteConfig.name}
-            </span>
-            <h1 className="mt-6 font-serif text-4xl font-medium leading-[1.1] text-white sm:text-5xl">
-              Tax and compliance support that feels like having an expert on
-              your team
-            </h1>
-            <p className="mt-6 text-lg text-brand-200">
-              {siteConfig.name}{" "}
-              was built around a simple idea: tax compliance
-              shouldn&apos;t be confusing, and it shouldn&apos;t be
-              something you only think about once a year. We work with
-              individuals and businesses across India on income tax, GST,
-              bookkeeping, and everything in between — handling the details
-              so you don&apos;t have to.
-            </p>
-          </div>
-        </Container>
-      </section>
+      <PageHero
+        eyebrow={`About ${siteConfig.name}`}
+        title="Tax and compliance support that feels like having an expert on your team"
+        description={
+          <>
+            {siteConfig.name}{" "}
+            was built around a simple idea: tax compliance shouldn&apos;t be
+            confusing, and it shouldn&apos;t be something you only think
+            about once a year. We work with individuals and businesses
+            across India on income tax, GST, bookkeeping, and everything in
+            between — handling the details so you don&apos;t
+            have to.
+          </>
+        }
+      />
 
-      <section className="bg-brand-900 py-10">
+      <section className="border-y border-slate-100 bg-white py-10">
         <Container>
           <StatsBar />
         </Container>
@@ -77,30 +72,29 @@ export default function AboutPage() {
             title="Built on accuracy, transparency, and staying ahead of deadlines"
           />
           <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2">
-            {values.map((value) => {
+            {values.map((value, i) => {
               const Icon = value.icon;
               return (
-                <div
-                  key={value.title}
-                  className="rounded-2xl border border-slate-200 bg-white p-7"
-                >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
-                    <Icon size={22} strokeWidth={1.75} />
-                  </span>
-                  <h3 className="mt-4 text-lg font-semibold text-brand-900">
-                    {value.title}
-                  </h3>
-                  <p className="mt-2 text-slate-600">{value.description}</p>
-                </div>
+                <Reveal key={value.title} delay={i * 70}>
+                  <div className="rounded-2xl border border-slate-200 bg-white p-7">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gold-50 text-gold-600">
+                      <Icon size={22} strokeWidth={1.75} />
+                    </span>
+                    <h3 className="mt-4 text-lg font-semibold text-brand-900">
+                      {value.title}
+                    </h3>
+                    <p className="mt-2 text-slate-600">{value.description}</p>
+                  </div>
+                </Reveal>
               );
             })}
           </div>
         </Container>
       </section>
 
-      <section className="bg-slate-50 py-20 sm:py-28">
+      <section className="bg-gold-50/60 py-20 sm:py-28">
         <Container className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
-          <div>
+          <Reveal>
             <SectionHeading
               eyebrow="How we work"
               title="A process built around clarity, not paperwork for its own sake"
@@ -112,7 +106,7 @@ export default function AboutPage() {
               we handle the filing, but we also make sure you understand what
               was filed and why, so nothing feels like a black box.
             </p>
-          </div>
+          </Reveal>
           <ol className="space-y-6">
             {[
               {
@@ -141,7 +135,7 @@ export default function AboutPage() {
               },
             ].map((item) => (
               <li key={item.step} className="flex gap-5">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-900 text-sm font-bold text-gold-400">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold-500 text-sm font-bold text-white">
                   {item.step}
                 </span>
                 <div>

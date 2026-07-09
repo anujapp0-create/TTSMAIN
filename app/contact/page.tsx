@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
+import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
+import Reveal from "@/components/Reveal";
 import { siteConfig } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
@@ -34,34 +36,22 @@ const contactDetails = [
 export default function ContactPage() {
   return (
     <>
-      <section className="bg-brand-950 py-20 sm:py-24">
-        <Container>
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center rounded-full bg-brand-900 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-gold-400">
-              Get in touch
-            </span>
-            <h1 className="mt-6 font-serif text-4xl font-medium leading-[1.1] text-white sm:text-5xl">
-              Let&apos;s talk about your tax and compliance needs
-            </h1>
-            <p className="mt-6 text-lg text-brand-200">
-              Book a free consultation and we&apos;ll help you figure out
-              exactly what you need — whether it&apos;s a single return or
-              ongoing support for your business.
-            </p>
-          </div>
-        </Container>
-      </section>
+      <PageHero
+        eyebrow="Get in touch"
+        title="Let's talk about your tax and compliance needs"
+        description="Book a free consultation and we'll help you figure out exactly what you need — whether it's a single return or ongoing support for your business."
+      />
 
       <section className="py-20 sm:py-24">
         <Container className="grid grid-cols-1 gap-12 lg:grid-cols-5">
-          <div className="lg:col-span-2">
+          <Reveal className="lg:col-span-2">
             <SectionHeading title="Contact details" />
             <ul className="mt-8 space-y-6">
               {contactDetails.map((item) => {
                 const Icon = item.icon;
                 const content = (
                   <span className="flex items-start gap-4">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gold-50 text-gold-600">
                       <Icon size={20} strokeWidth={1.75} />
                     </span>
                     <span>
@@ -101,14 +91,14 @@ export default function ContactPage() {
                 ))}
               </ul>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="lg:col-span-3">
+          <Reveal className="lg:col-span-3">
             <SectionHeading title="Send us a message" />
             <div className="mt-8">
               <ContactForm />
             </div>
-          </div>
+          </Reveal>
         </Container>
       </section>
     </>
